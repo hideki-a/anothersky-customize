@@ -1,0 +1,46 @@
+{
+    "name": "hideki-a/anothersky-customize",
+    "description": "Customize for anothersky.pw",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin"
+    ],
+    "support": {
+        "docs": "https://github.com/hideki-a/anothersky-customize/blob/master/README.md",
+        "issues": "https://github.com/hideki-a/anothersky-customize/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hideki Abe",
+            "homepage": "https://www.anothersky.pw"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "~3.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "hidekia\\anotherskycustomize\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "AnotherskyCustomize",
+        "handle": "anothersky-customize",
+        "schemaVersion": "1.0.0",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/hideki-a/anothersky-customize/master/CHANGELOG.md",
+        "class": "hidekia\\anotherskycustomize\\AnotherskyCustomize"
+    }
+}
