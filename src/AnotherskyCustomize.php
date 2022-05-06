@@ -1,10 +1,10 @@
 <?php
 /**
- * AnotherskyCustomize plugin for Craft CMS 3.x
+ * AnotherskyCustomize plugin for Craft CMS 4.x
  *
  *
  * @link      https://www.anothersky.pw
- * @copyright Copyright (c) 2021 Hideki Abe
+ * @copyright Copyright (c) 2022 Hideki Abe
  */
 
 namespace hidekia\anotherskycustomize;
@@ -12,8 +12,8 @@ namespace hidekia\anotherskycustomize;
 use Craft;
 use craft\base\Plugin;
 use craft\services\Plugins;
-use craft\events\PluginEvent;
-
+use craft\controllers\ElementsController;
+use craft\events\DefineElementEditorHtmlEvent;
 use yii\base\Event;
 
 /**
@@ -28,7 +28,7 @@ use yii\base\Event;
  *
  * @author    Hideki Abe
  * @package   AnotherskyCustomize
- * @since     1.0.0
+ * @since     2.0.0
  *
  */
 class AnotherskyCustomize extends Plugin
@@ -63,9 +63,13 @@ class AnotherskyCustomize extends Plugin
         parent::init();
         self::$plugin = $this;
 
-        Craft::$app->view->hook('cp.entries.edit.content', function (array &$context) {
-            return '<div style="margin-top: 1.5rem;">SiteGuard設定: <pre>./tools/setip ' . $_SERVER['REMOTE_ADDR'] . '</pre></div>';
-        });
+        Event::on(
+            ElementsController::class,
+            ElementsController::EVENT_DEFINE_EDITOR_CONTENT,
+            function (DefineElementEditorHtmlEvent $event) {
+                $event->html .= '<div style="margin-top: 1.5rem;">SiteGuard設定: <pre>./tools/setip ' . $_SERVER['REMOTE_ADDR'] . '</pre></div>';
+            }
+        );
 
         Craft::info(
             Craft::t(

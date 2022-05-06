@@ -2,7 +2,7 @@
     "name": "hideki-a/anothersky-customize",
     "description": "Customize for anothersky.pw",
     "type": "craft-plugin",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "keywords": [
         "craft",
         "cms",
@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "craftcms/cms": "*"
+        "craftcms/cms": "~4.0"
     },
     "repositories": [
         {
